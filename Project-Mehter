@@ -1,0 +1,29 @@
+#include <Arduino.h>
+int i = 2;
+void setup() {
+	for (; i < 9; i++)
+	{
+		pinMode(i, OUTPUT);
+	}
+	i = 2;
+}
+void loop() {
+	
+		digitalWrite(i, HIGH);
+		digitalWrite(++i, HIGH);
+		delay(600);
+		digitalWrite(i, HIGH);
+		digitalWrite(++i, HIGH);
+		delay(600);
+		if (i > 8)
+		{
+			İ = 2;
+			digitalWrite(2, LOW);
+			digitalWrite(3, LOW);
+			digitalWrite(4, LOW);
+			digitalWrite(5, LOW);
+			digitalWrite(6, LOW);
+			digitalWrite(7, LOW);
+			digitalWrite(8, LOW);
+		}
+}
