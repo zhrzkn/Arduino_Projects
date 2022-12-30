@@ -1,0 +1,25 @@
+#include <Arduino.h>
+
+void setup() {
+	pinMode(3, INPUT);
+	pinMode(5, OUTPUT);
+	pinMode(6, OUTPUT);
+	Serial.begin(9600);
+}
+
+void loop() {
+	if (!digitalRead(3))
+	{
+		Serial.println("Toprak Nemli");
+		digitalWrite(5, HIGH);
+		digitalWrite(6, LOW);
+	}
+	else
+	{
+
+		Serial.println("Toprak Kuru");
+		digitalWrite(5, LOW);
+		digitalWrite(6, HIGH);
+	}
+
+}
