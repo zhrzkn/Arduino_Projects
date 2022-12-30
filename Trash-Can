@@ -1,0 +1,33 @@
+#include <Arduino.h>
+#include <Servo.h>
+#include <HCSR04.h>
+
+int trigger_pin = 11;
+int echo_pin = 10;
+int servoPin = 3;
+Servo Servo1;
+
+double sure;
+int mesafe;
+
+void setup() {
+	pinMode(trigger_pin, OUTPUT);
+	pinMode(echo_pin, INPUT);
+	Servo1.attach(servoPin);
+	Serial.begin(9600);
+
+}
+
+void loop() {
+	digitalWrite(trigger_pin, HIGH);
+	delayMicroseconds(500);
+	digitalWrite(trigger_pin, LOW);
+	sure = pulseIn(echo_pin, HIGH);
+	mesafe = (sure * 0.034) / 2;
+	if (mesafe < 20)
+	{
+		Servo1.write(90);
+		delay(4000);
+		Servo1.write(0);
+	}
+}
