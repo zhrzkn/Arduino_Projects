@@ -1,0 +1,31 @@
+
+#include <Arduino.h>
+int ledPin = 4;
+int soundPin = A0;
+boolean LedDurum = false;
+void setup() {
+	pinMode(ledPin, OUTPUT);
+	Serial.begin(9600);
+
+}
+
+void loop() {
+	int value = analogRead(soundPin);
+	Serial.println(value);
+	if (value > 90)
+	{
+		if (LedDurum == false)
+		{
+			LedDurum = true;
+			digitalWrite(ledPin, HIGH);
+			delay(6000);
+		}
+		else
+		{
+			LedDurum = false;
+			digitalWrite(ledPin, LOW);
+			delay(6000);
+		}
+
+	}
+}
