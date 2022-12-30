@@ -1,0 +1,32 @@
+#include <Arduino.h>
+#include <Servo.h>
+int ServoYatayPin = 3;
+int ServoDikeyPin = 4;
+int YatayPotPin = A0;
+int DikeyPotPin = A1;
+int ServoY_Min = 0;
+int ServoY_Max = 180;
+int ServoD_Min = 0;
+int ServoD_Max = 180;
+Servo YatayServo;
+Servo DikeyServo;
+int YatayPotValue;
+int YatayServoPosition;
+int DikeyPotValue;
+int DikeyServoPosition;
+
+void setup() {
+	YatayServo.attach(ServoYatayPin);
+	DikeyServo.attach(ServoDikeyPin);
+}
+
+void loop() {
+	YatayPotValue = analogRead(YatayPotPin);
+	DikeyPotValue = analogRead(YatayPotPin);
+	YatayServoPosition = map(YatayPotValue, 0, 1023, 0, 180);
+	DikeyServoPosition = map(DikeyPotValue, 0, 1023, 0, 180);
+	YatayServo.write(YatayServoPosition);
+	DikeyServo.write(DikeyServoPosition);
+	delay(20);
+
+}
