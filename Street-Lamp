@@ -1,0 +1,23 @@
+#include <Arduino.h>
+
+int lambaPin = 10;
+int LDRpin = A3;
+void setup() {
+	pinMode(lambaPin, OUTPUT);
+	Serial.begin(9600);
+}
+
+void loop() {
+	int isik_degeri = analogRead(LDRpin);
+	Serial.println(isik_degeri);
+	delay(100);
+	if (isik_degeri < 20)
+	{
+		digitalWrite(lambaPin, HIGH);
+	}
+	else
+	{
+		digitalWrite(lambaPin, LOW);
+	}
+
+}
