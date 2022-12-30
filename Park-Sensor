@@ -1,0 +1,58 @@
+#include <Arduino.h>
+#include <HCSR04.h>
+int trigger_pin = 11;
+int echo_pin = 10;
+int buzzer_pin = 8;
+double sure;
+double mesafe;
+
+void setup() {
+	pinMode(trigger_pin, OUTPUT);
+	pinMode(echo_pin, INPUT);
+	pinMode(buzzer_pin, OUTPUT);
+	Serial.begin(9600);
+}
+void alarm()
+{
+	tone(buzzer_pin, 440);
+	delay(25);
+	noTone(buzzer_pin);
+	delay(600);
+}
+void alarm2()
+{
+	tone(buzzer_pin, 440);
+	delay(25);
+	noTone(buzzer_pin);
+	delay(200);
+}
+void alarm3()
+{
+	tone(buzzer_pin, 440);
+	delay(100);
+	noTone(buzzer_pin);
+}
+
+void loop() {
+	digitalWrite(trigger_pin, HIGH);
+	delayMicroseconds(1000);
+	digitalWrite(trigger_pin, LOW);
+	sure = pulseIn(echo_pin, HIGH);
+	mesafe = (sure * 0.034) / 2;
+
+	if (mesafe < 10)
+	{
+		alarm3();
+	}
+	else if (mesafe < 25)
+	{
+		alarm2();
+	}
+	else if (mesafe < 50)
+	{
+		alarm();
+	}
+	Serial.print("Mesafe=");
+	Serial.println(mesafe);
+
+}
