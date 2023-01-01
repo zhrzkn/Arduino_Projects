@@ -1,0 +1,15 @@
+#include <Stepper.h>
+#define STEP 100
+
+Stepper stepper(STEP,8,9,10,11);
+
+int direction=1, speed=5;
+
+void setup()
+{
+}
+
+void loop()  {
+  stepper.setSpeed(speed);
+  stepper.step(direction);
+}
