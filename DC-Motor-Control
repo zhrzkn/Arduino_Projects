@@ -1,0 +1,31 @@
+int ln3=4;
+int ln4=3;
+int enb=5;
+
+void setup() {
+    pinMode(ln3,OUTPUT);
+    pinMode(ln4,OUTPUT);
+    pinMode(enb, OUTPUT);
+
+}
+
+void loop() {
+  forward();
+  delay(2000);
+  back();
+  delay(2000);
+
+}
+
+void forward() {
+   digitalWrite(ln3,HIGH);
+   digitalWrite(ln4,LOW);
+   analogWrite(enb,200);
+
+}
+void back() {
+   digitalWrite(ln3,LOW);
+   digitalWrite(ln4,HIGH);
+   analogWrite(enb,255);
+
+}
